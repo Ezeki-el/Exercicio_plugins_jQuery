@@ -1,6 +1,5 @@
 $(document).ready(function() {
     // Aplicar máscaras aos campos
-    console.log("Máscaras aplicadas");
     $('#telefone').mask('(00) 0000-0000');
     $('#cpf').mask('000.000.000-00');
     $('#cep').mask('00000-000');
@@ -17,7 +16,18 @@ $(document).ready(function() {
         const endereco = $('#endereco').val();
         const cep = $('#cep').val();
 
-        console.log("Formulário enviado");
+        // Validar CPF (neste exemplo, apenas verificamos se tem 11 dígitos)
+        if (cpf.replace(/\D/g, '').length !== 11) {
+            showError('CPF inválido.');
+            return;
+        }
+
+        // Validar CEP (neste exemplo, apenas verificamos se tem 8 dígitos)
+        if (cep.replace(/\D/g, '').length !== 8) {
+            showError('CEP inválido.');
+            return;
+        }
+
         // Se todos os campos estiverem válidos, você pode enviar o formulário aqui
         // Ou realizar qualquer outra ação necessária
 
